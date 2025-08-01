@@ -11,7 +11,7 @@ $(function () {
   signUpEligibleNumChart();
   signUpEligibleRateChart();
 
-  echarts_map();
+  // echarts_map();
   function echarts_1() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById("echart1"));
