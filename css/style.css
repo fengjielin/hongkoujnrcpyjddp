@@ -138,10 +138,11 @@ i {
   z-index: 10;
   opacity: 0.8;
   top: 5%;
-  width: 60%;
+  width: 82%;
   height: 100%;
-  left: 20%;
+  left: 50%;
   overflow: hidden;
+  transform: translateX(-50%);
 }
 
 .map1,

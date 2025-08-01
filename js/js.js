@@ -753,7 +753,7 @@ $(function () {
     var myChart = echarts.init(document.getElementById("signUpEligibleRate"));
     var option = {
       title: {
-        text: "合格率",
+        text: "",
         left: "center",
         top: 0,
         textStyle: {
