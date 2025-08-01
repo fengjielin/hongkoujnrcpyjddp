@@ -1,0 +1,402 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>虹口区技能人才培养基地平台大屏中心</title>
+	<!-- <meta http-equiv="refresh" content="60;url='https://gitee.com/iGaoWei/big-data-view'"> -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/echarts.min.js"></script>
+	<script type="text/javascript" src="js/area_echarts.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j&callback"></script>
+	<script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
+  <script src="https://data.jianshukeji.com/geochina/hunan.js"></script>
+  <script src="https://data.jianshukeji.com/geochina/shanghai.js"></script>
+	<script type="text/javascript" src="js/js.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<script>
+	// alert("地图模块本地需要在iis环境下运行\n请先搭建iis服务否则不能看到地图")
+</script>
+
+<body>
+	<div class="head clearfix">
+		<h1 class="">虹口区技能人才培养基地平台大屏中心</h1>
+		<div class="time" id="showTime">2022/6/12 17:00:12</div>
+		<div class="name"></div>
+		<script>
+			var t = null;
+			t = setTimeout(time, 1000);//開始运行
+			function time() {
+				clearTimeout(t);//清除定时器
+				dt = new Date();
+				var y = dt.getFullYear();
+				var mt = dt.getMonth() + 1;
+				var day = dt.getDate();
+				var h = dt.getHours();//获取时
+				var m = dt.getMinutes();//获取分
+				var s = dt.getSeconds();//获取秒
+				document.getElementById("showTime").innerHTML = y + "/" + mt + "/" + day + " " + h + ":" + m + ":" + s + "";
+				t = setTimeout(time, 1000); //设定定时器，循环运行     
+			}
+
+		</script>
+	</div>
+	<div class="mainbox">
+		<ul class="clearfix nav1">
+			<li style="width: 26%">
+				<div class="box">
+					<div class="boxnav time-select" style="margin-bottom: 6px;">
+						<div class="date-range-picker">
+							<div class="picker-input">
+								<input type="text" id="dateRangeInput" placeholder="请选择日期范围" readonly>
+								<i class="calendar-icon">📅</i>
+							</div>
+							<div class="picker-panel" id="dateRangePanel" style="display: none;">
+								<div class="picker-header">
+									<button class="prev-month" id="prevMonth">‹</button>
+									<span class="current-month" id="currentMonth">2024年1月</span>
+									<button class="next-month" id="nextMonth">›</button>
+								</div>
+								<div class="picker-body">
+									<div class="weekdays">
+										<span>日</span>
+										<span>一</span>
+										<span>二</span>
+										<span>三</span>
+										<span>四</span>
+										<span>五</span>
+										<span>六</span>
+									</div>
+									<div class="days" id="daysContainer">
+										<!-- 日期将通过JavaScript动态生成 -->
+									</div>
+								</div>
+								<div class="picker-footer">
+									<button class="clear-btn" id="clearBtn">清空</button>
+									<button class="confirm-btn" id="confirmBtn">确定</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box">
+					<div class="tit"><span>报名人数占比</span>
+						<p></p>
+					</div>
+					<div class="boxnav" style="height: 280px;">
+						<div id="signUpNum" style="width: 100%; height: 100%;"></div>
+						<!-- <ul class="drqk clearfix">
+							<li>
+								<div class="icon"><img src="images/icona.png"></div>
+								<div><span>今日就诊人数</span>
+									<p><em>1358</em><i>人</i></p>
+								</div>
+							</li>
+							<li>
+								<div class="icon"><img src="images/iconb.png"></div>
+								<div><span>今日就诊人数</span>
+									<p><em>1983</em><i>人</i></p>
+								</div>
+							</li>
+							<li>
+								<div class="icon"><img src="images/iconc.png"></div>
+								<div><span>今日就诊人数</span>
+									<p><em>930</em><i>人</i></p>
+								</div>
+							</li>
+							<li>
+								<div class="icon"><img src="images/icond.png"></div>
+								<div><span>今日就诊人数</span>
+									<p><em>371</em><i>人</i></p>
+								</div>
+							</li>
+							<li>
+								<div class="icon"><img src="images/icone.png"></div>
+								<div><span>今日就诊人数</span>
+									<p><em>1683</em><i>人</i></p>
+								</div>
+							</li>
+							<li>
+								<div class="icon"><img src="images/iconf.png"></div>
+								<div><span>今日就诊人数</span>
+									<p><em>1091</em><i>人</i></p>
+								</div>
+							</li>
+						</ul> -->
+					</div>
+				</div>
+				<div class="box">
+					<div class="tit"><span>报名与合格人数 </span>
+						<p></p>
+					</div>
+					<div class="boxnav" style="height:250px;">
+						<div id="signUpEligibleNum" style="width: 100%; height: 100%;"></div>
+						<!-- <table class="table1" width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<th>发病统计</th>
+									<th>甲类</th>
+									<th>乙类</th>
+									<th>丙类</th>
+								</tr>
+								<tr>
+									<td>发病数（万）</td>
+									<td>0.03<span class="text-b">↓0.01%</span></td>
+									<td>163.00<span class="text-d">↑4.01%</span></td>
+									<td>163.00<span class="text-d">↑4.01%</span></td>
+								</tr>
+								<tr>
+									<td>发病率（%）</td>
+									<td>0.3<span class="text-b">↓0.01%</span></td>
+									<td>100%<span class="text-d">↑4.01</span></td>
+									<td>81.92%<span class="text-d">↑4.01</span></td>
+								</tr>
+
+
+							</tbody>
+						</table> -->
+					</div>
+				</div>
+				<div class="box">
+					<div class="tit"><span>合格率</span>
+						<p></p>
+					</div>
+					<div class="boxnav" style="height: 250px;">
+						<div id="signUpEligibleRate" style="width: 100%; height: 100%;"></div>
+						<!-- <ul class="ylfw">
+							<li>
+								<div class="ylfwbox fora">
+									<p>医师日均报卡量</p>
+									<ol><span>12.5</span><em>张</em><i class="text-d">↑4.01%</i></ol>
+									<div class="forb"></div>
+								</div>
+							</li>
+							<li>
+								<div class="ylfwbox fora">
+									<p>平均报卡时间</p>
+									<ol><span>1234</span><em>秒</em><i class="text-s">↓4.01%</i></ol>
+									<div class="forb"></div>
+								</div>
+							</li>
+
+							<li>
+								<div class="ylfwbox fora">
+									<p>医生最高报卡量</p>
+									<ol><span>2.3</span><em>小时</em><i class="text-s">↓4.01%</i></ol>
+									<div class="forb"></div>
+								</div>
+							</li>
+							<li>
+								<div class="ylfwbox fora">
+									<p>最低报卡时间</p>
+									<ol><span>0012</span><em>秒</em><i class="text-s">↓4.01%</i></ol>
+									<div class="forb"></div>
+								</div>
+							</li>
+							<li>
+								<div class="ylfwbox fora">
+									<p>医生排除比例</p>
+									<ol><span>10.00%</span><em></em><i class="text-s">↓4.01%</i></ol>
+									<div class="forb"></div>
+								</div>
+							</li>
+							<li>
+								<div class="ylfwbox fora">
+									<p>迟报漏报卡数</p>
+
+									<ol><span>0013</span><em>张</em><i class="text-s">↓4.01%</i></ol>
+									<div class="forb"></div>
+								</div>
+							</li>
+
+						</ul> -->
+					</div>
+				</div>
+			</li>
+			<li style="width:48%">
+				<div class="box">
+					<!-- <div class="tit"><span>监测机构</span>
+						<p></p>
+					</div> -->
+					<div class="boxnav" style="height: 250px;">
+						<div class="data-dashboard">
+							<div class="data-item-group">
+								<div class="data-item">
+									<div class="data-title">开班数</div>
+									<div class="data-value">14</div>
+									<div class="data-unit">个</div>
+								</div>
+								<div class="data-item">
+									<div class="data-title">合格率</div>
+									<div class="data-value">30</div>
+									<div class="data-unit">%</div>
+								</div>
+								<div class="data-item">
+									<div class="data-title">补考人数</div>
+									<div class="data-value">234</div>
+									<div class="data-unit">人</div>
+								</div>
+								<div class="data-item">
+									<div class="data-title">培训收入</div>
+									<div class="data-value">35,600</div>
+									<div class="data-unit">元</div>
+								</div>
+							</div>
+							<div class="data-item-group">
+								<div class="data-item">
+									<div class="data-title">在线招聘岗位数</div>
+									<div class="data-value">89</div>
+									<div class="data-unit">个</div>
+								</div>
+								<div class="data-item">
+									<div class="data-title">在线课程量</div>
+									<div class="data-value">367</div>
+									<div class="data-unit">门</div>
+								</div>
+								<div class="data-item">
+									<div class="data-title">在线题库量</div>
+									<div class="data-value">1256</div>
+									<div class="data-unit">题</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="box" style="position: relative; padding-top: 60px;">
+					<div class="map">
+						<div class="map1"><img src="images/lbx.png"></div>
+						<div class="map2"><img src="images/jt.png"></div>
+						<div class="map3"><img src="images/map.png"></div>
+					</div>
+
+					<div class="" id="map" style="height: 557px; position: relative; z-index: 100"></div>
+
+					<!--		<script>
+    // 百度地图API功能
+    var map = new BMap.Map("map");    // 创建Map实例
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+    map.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));
+    var mapStyle={
+        style:"midnight"
+    };
+    map.setMapStyle(mapStyle);
+    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);
+</script>
+				-->
+
+				</div>
+
+			</li>
+			<li style="width: 26%">
+				<div class="box">
+					<div class="boxnav title-select" style="margin-bottom: 6px;">
+						<div class="title-selector">
+							<div class="select-input">
+								<input type="text" id="titleInput" placeholder="请选择职称" readonly>
+								<i class="arrow-icon">▼</i>
+							</div>
+							<div class="select-dropdown" id="titleDropdown" style="display: none;">
+								<div class="dropdown-search">
+									<input type="text" id="searchInput" placeholder="搜索职称...">
+								</div>
+								<div class="dropdown-list" id="titleList">
+									<div class="dropdown-item" data-value="全部">全部</div>
+									<div class="dropdown-item" data-value="养老护理">养老护理</div>
+									<div class="dropdown-item" data-value="婴幼儿发展引导员">婴幼儿发展引导员</div>
+									<div class="dropdown-item" data-value="汽车维修工">汽车维修工</div>
+									<div class="dropdown-item" data-value="网络与信息安全管理员">网络与信息安全管理员</div>
+									<div class="dropdown-item" data-value="人工智能训练师">人工智能训练师</div>
+									<div class="dropdown-item" data-value="健康管理师">健康管理师</div>
+									<div class="dropdown-item" data-value="心理咨询师">心理咨询师</div>
+									<div class="dropdown-item" data-value="营养师">营养师</div>
+									<div class="dropdown-item" data-value="康复治疗师">康复治疗师</div>
+									<div class="dropdown-item" data-value="社会工作师">社会工作师</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box">
+					<div class="tit"><span>报名排行</span>
+						<p></p>
+					</div>
+					<div class="boxnav" id="" style="height: 280px;">
+						<ol class="signup-rank-list">
+							<li class="top1">
+								<span class="rank-num">1</span>
+								<span class="rank-title">养老护理</span>
+								<span class="rank-value">1234人</span>
+							</li>
+							<li class="top2">
+								<span class="rank-num">2</span>
+								<span class="rank-title">人工智能训练师</span>
+								<span class="rank-value">1146人</span>
+							</li>
+							<li class="top3">
+								<span class="rank-num">3</span>
+								<span class="rank-title">网络与信息安全管理员</span>
+								<span class="rank-value">1087人</span>
+							</li>
+							<li>
+								<span class="rank-num">4</span>
+								<span class="rank-title">婴幼儿发展引导员</span>
+								<span class="rank-value">869人</span>
+							</li>
+							<li>
+								<span class="rank-num">5</span>
+								<span class="rank-title">汽车维修工</span>
+								<span class="rank-value">678人</span>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<div class="box">
+					<div class="tit"><span>培训收入</span>
+						<p></p>
+					</div>
+					<div class="boxnav" style="height: 250px;">
+						<div id="echart7" style="width: 100%; height: 100%;"></div>
+					</div>
+				</div>
+
+				<div class="box">
+					<div class="tit"><span>补考人数</span>
+						<p></p>
+					</div>
+					<div class="boxnav" style="height: 250px;">
+						<div id="echart8" style="width: 100%; height: 100%;"></div>
+						<!-- <ul class="jbgc">
+							<li>
+								<div class="jztxt">
+									<div>
+										<h3>1236<i>万元</i></h3>
+										<span>私人诊所</span>
+									</div>
+									<div>
+										<h3>1236<i>万元</i></h3>
+										<span>私人诊所</span>
+									</div>
+									<div>
+										<h3>1236<i>万元</i></h3>
+										<span>私人诊所</span>
+									</div>
+								</div>
+							</li>
+							<li style="width:90%" id="echart8"></li>
+						</ul> -->
+					</div>
+				</div>
+
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>

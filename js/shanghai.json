@@ -1,0 +1,133 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "黄浦区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.48, 31.23], [121.49, 31.23], [121.49, 31.22], [121.48, 31.22], [121.48, 31.23]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "徐汇区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.43, 31.18], [121.45, 31.18], [121.45, 31.16], [121.43, 31.16], [121.43, 31.18]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "长宁区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.41, 31.22], [121.43, 31.22], [121.43, 31.20], [121.41, 31.20], [121.41, 31.22]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "静安区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.44, 31.25], [121.46, 31.25], [121.46, 31.23], [121.44, 31.23], [121.44, 31.25]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "普陀区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.39, 31.25], [121.41, 31.25], [121.41, 31.23], [121.39, 31.23], [121.39, 31.25]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "虹口区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.47, 31.27], [121.49, 31.27], [121.49, 31.25], [121.47, 31.25], [121.47, 31.27]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "杨浦区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.51, 31.27], [121.53, 31.27], [121.53, 31.25], [121.51, 31.25], [121.51, 31.27]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "闵行区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.37, 31.12], [121.41, 31.12], [121.41, 31.08], [121.37, 31.08], [121.37, 31.12]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "宝山区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.47, 31.32], [121.51, 31.32], [121.51, 31.28], [121.47, 31.28], [121.47, 31.32]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "嘉定区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.24, 31.38], [121.28, 31.38], [121.28, 31.34], [121.24, 31.34], [121.24, 31.38]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "浦东新区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.53, 31.22], [121.59, 31.22], [121.59, 31.16], [121.53, 31.16], [121.53, 31.22]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "金山区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.16, 30.89], [121.20, 30.89], [121.20, 30.85], [121.16, 30.85], [121.16, 30.89]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "松江区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.22, 31.02], [121.26, 31.02], [121.26, 30.98], [121.22, 30.98], [121.22, 31.02]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "青浦区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.12, 31.15], [121.16, 31.15], [121.16, 31.11], [121.12, 31.11], [121.12, 31.15]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "奉贤区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.45, 30.92], [121.49, 30.92], [121.49, 30.88], [121.45, 30.88], [121.45, 30.92]]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "崇明区"},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[121.40, 31.62], [121.44, 31.62], [121.44, 31.58], [121.40, 31.58], [121.40, 31.62]]]]
+      }
+    }
+  ]
+} 
