@@ -857,7 +857,7 @@ $(function () {
     ];
     option4 = {
       title: {
-        text: "",
+        text: "上海市各区域",
         style: {
           color: "#fff",
           fontSize: "18px",
